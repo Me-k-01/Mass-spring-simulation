@@ -1,5 +1,5 @@
 
-public class Key { // Pair permutable pour le hashmap des springs
+public class Key { // Paire permutable pour le dictionnaire des springs
     private final int x;
     private final int y;
 
@@ -18,6 +18,6 @@ public class Key { // Pair permutable pour le hashmap des springs
 
     @Override
     public int hashCode() { 
-        return x*y + y*x;//d//Objects.hash(x, y); //  31 * result + y
+        return x*y + y*x; //Objects.hash(x, y); //  31 * result + y
     }
 }
