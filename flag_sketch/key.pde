@@ -13,11 +13,11 @@ public class Key { // Paire permutable pour le dictionnaire des springs
         if (this == o) return true;
         if (!(o instanceof Key)) return false;
         Key key = (Key) o;
-        return x == key.x && y == key.y || x == key.y && x == key.y;
+        return x == key.x && y == key.y || x == key.y && x == key.y; // Il n'y a qu'un ressort qui relie les deux sommets
     }
 
     @Override
     public int hashCode() { 
-        return x*y + y*x; //Objects.hash(x, y); //  31 * result + y
+        return x*y; // 31 * result + y
     }
 }
