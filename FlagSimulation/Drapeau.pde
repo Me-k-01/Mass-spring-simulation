@@ -88,57 +88,23 @@ class Drapeau{
 
         // 3 boucles sur chaque tableau
         //particules
-        PVector v, vn, f;
-        Particule partI;
+   
+   
         for(int i =0 ; i<particules.size();i++){
-            partI = particules.get(i);
-            vn = new PVector(0,0,0);
-            v = PVector.sub(partI.velocite, vent);
-            v.normalize(vn);
+            particules.get(i).calculerForces();
             
-            f = PVector.mult(vn, -partI.amortissementAir * v.dot(v) );
-            PVector.add( PVector.mult(gravite,partI.masse),f, partI.forceExterne );
            
         }
         //ressorts
-        Ressort resI;
-        PVector p1P2;
-        float dist;
+   
         for(int i =0 ; i<ressorts.size();i++){
-            
-            resI = ressorts.get(i);
-            p1P2 = PVector.sub(resI.particule2.position, resI.particule1.position);
-
-            dist = p1P2.mag();
-
-            f = PVector.mult(p1P2, (dist - resI.longueurRepos)* -resI.rigidite  );
-            //print(dist+"\n");
-            resI.particule1.forceExterne.add(f);
-            resI.particule2.forceExterne.sub(f);
+            ressorts.get(i).calculerForces();
+         
         }
         //triangles
-        Triangle triI;
-        PVector surf;
         for(int i =0 ; i<triangles.size();i++){
-            
-            triI = triangles.get(i);
-            triI.calculerNormale();
-
-            surf= PVector.mult( PVector.add(triI.particule1.velocite, 
-                                            PVector.add(triI.particule2.velocite,triI.particule3.velocite) 
-                                            )
-                               , (1.f/3.f));
-            v = PVector.sub(vent,surf);
-
-            f = PVector.mult( 
-                            PVector.mult(  triI.normale,
-                                           ( v.dot(triI.normale)* triI.amortissementAir))
-                            , (1.f/3.f)
-                            );
-            triI.particule1.forceExterne.add(f);
-            triI.particule2.forceExterne.add(f);
-            triI.particule3.forceExterne.add(f);
-
+           triangles.get(i).calculerForces();
+        
         }
       
 

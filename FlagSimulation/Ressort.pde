@@ -25,7 +25,18 @@ class Ressort{
         particule2=p2;
 
     }
-
+   public void calculerForces(){
+    
+        PVector p1P2 = PVector.sub(particule2.position, particule1.position);
+    
+        float dist = p1P2.mag();
+    
+        PVector f = PVector.mult(p1P2, (dist - longueurRepos)* -rigidite  );
+        //print(dist+"\n");
+        particule1.forceExterne.add(f);
+        particule2.forceExterne.sub(f);
+     
+   }
 
    public void dessiner(){
         

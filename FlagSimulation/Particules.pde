@@ -38,6 +38,16 @@ class Particule{
             velocite = velociteSuivante.copy();
         }
     }
+    
+    public void calculerForces(){
+      
+            PVector vn = new PVector(0,0,0);
+            PVector v = PVector.sub(velocite, vent);
+            v.normalize(vn);
+            
+            PVector f = PVector.mult(vn, -amortissementAir * v.dot(v) );
+            PVector.add( PVector.mult(gravite,masse),f, forceExterne );
+    }
 
     public void dessiner(float radius){
         translate(position.x,position.y,position.z);
