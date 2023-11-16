@@ -4,7 +4,7 @@ import peasy.*;
 PeasyCam cam;
 Drapeau d;
 PVector gravite, vent;
-float dt = 0.03f;
+float dt = 0.04f;
 
 float rigiditePrincipale=1;
 float rigiditeSecond=0.1;

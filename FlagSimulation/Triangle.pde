@@ -38,7 +38,7 @@ class Triangle{
         
         PVector surf= PVector.mult( PVector.add(particule1.velocite, 
                                       PVector.add(particule2.velocite,particule3.velocite) 
-                                      ) //<>// //<>//
+                                      )
                          , (1.f/3.f));
         PVector v = PVector.sub(vent,surf); 
         
