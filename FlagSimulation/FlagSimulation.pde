@@ -7,7 +7,6 @@ PVector gravite, vent;
 
 
 void genereVent(float n) {
-    
   vent.x = random(0,5);
   vent.y = 0.0;
   vent.z = random( - 5,5);
@@ -27,7 +26,7 @@ void setup() {
   cam.setSuppressRollRotationMode(); 
   
   d = new Drapeau(new PVector(0,0,0), 20 , 5 , 0.3 ,0.01 ,0, 100, 5.5);
-  vent=  new PVector(0,0,0); 
+  vent = new PVector(0,0,0); 
   gravite = new PVector(0,5.8,0); 
   
 }

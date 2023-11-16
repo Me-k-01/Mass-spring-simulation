@@ -24,43 +24,41 @@ class Drapeau{
             
             x = (i % longueur) * longRep;
             y = int(i / longueur) * longRep;
-            posParticule = new PVector(x,y,0).add(position);
+            posParticule = new PVector(x, y, 0).add(position);
             
-            particules.add(new Particule(posParticule,new PVector(0,0,0), masses , amortissementAirMasses));
-            
-            
-            
+            particules.add(new Particule(posParticule, new PVector(0,0,0), masses, amortissementAirMasses));
         }
-        //contraintes
+
+        // contraintes statiques 
         particules.get(0).statique = true;
         if (nbParticules > 2)
-            particules.get((largeur - 1) * longueur).statique = true;
+            particules.get((largeur - 1) * longueur).statique = true; 
+
+
         //============================================
         // generation des ressorts
         //============================================
         boolean lar,lon;
         for (int i = 0; i < nbParticules; i++) {
-            lar = false;
-            lon = false;
+            lar = (i % longueur) < longueur - 1;
+            lon = int(i / longueur) < largeur - 1;
             
-            if ((i % longueur) < longueur - 1) {
+            if (lar) {
                 ressorts.add(new Ressort(particules.get(i), particules.get(i + 1), rigide, longRep ));
-                
-                lon = true;
             }
-            if (int(i / longueur) < largeur - 1) {
-                ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur), rigide, longRep ));
-                lar = true;
+            if (lar) {
+                ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur), rigide, longRep )); 
             }
             if (lar && lon)
                 ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur + 1), rigide, longRep * sqrt(2) ));
-            
+
+            // TODO : ajouter plus de ressort au voisin indirecte et reduire leurs rigidité poids
         }
+
+
         //============================================
         // generation des triangle
         //============================================
-        
-        
         if (nbParticules > 2 && largeur > 1 && longueur > 1) {
             int ind;
             if (nbParticules == 3)
@@ -84,8 +82,7 @@ class Drapeau{
         
         // 3 boucles sur chaque tableau
         //particules
-        
-        
+
         for (int i = 0; i < particules.size();i++) {
             particules.get(i).calculerForces();            
         }
