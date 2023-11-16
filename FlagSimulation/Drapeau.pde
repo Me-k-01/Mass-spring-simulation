@@ -18,12 +18,12 @@ class Drapeau{
         longueur = l;
         largeur = nbParticules / longueur;
         
-        float x,y = 0;
+        
         PVector posParticule;
         for (int i = 0; i < nbParticules; i++) {
             
-            x = (i % longueur) * longRep;
-            y = int(i / longueur) * longRep;
+            float x = (i % longueur) * longRep;
+            float y = int(i / longueur) * longRep;
             posParticule = new PVector(x, y, 0).add(position);
             
             particules.add(new Particule(posParticule, new PVector(0,0,0), masses, amortissementAirMasses));
@@ -38,22 +38,15 @@ class Drapeau{
         //============================================
         // generation des ressorts
         //============================================
-        boolean lar,lon;
-        for (int i = 0; i < nbParticules; i++) {
-            lar = (i % longueur) < longueur - 1;
-            lon = int(i / longueur) < largeur - 1;
-            
-            if (lar) {
-                ressorts.add(new Ressort(particules.get(i), particules.get(i + 1), rigide, longRep ));
-            }
-            if (lar) {
-                ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur), rigide, longRep )); 
-            }
-            if (lar && lon)
-                ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur + 1), rigide, longRep * sqrt(2) ));
 
-            // TODO : ajouter plus de ressort au voisin indirecte et reduire leurs rigidité poids
+        for(int x = 0; x<longueur;x++ ){
+            for(int y = 0 ; y<largeur; y++){
+                
+            
+            }
         }
+    
+
 
 
         //============================================
