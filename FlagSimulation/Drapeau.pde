@@ -10,7 +10,7 @@ class Drapeau{
     public ArrayList<Triangle> triangles = new ArrayList<Triangle>();
     
     
-    public Drapeau(PVector p, int nbParticules, int l, float masses , float amortissementAirMasses , float rigide, float longRep,float amortissementAirTri ) {
+    public Drapeau(PVector p, int nbParticules, int l, float masses , float amortissementAirMasses ,float longRep,float amortissementAirTri ) {
         
         // generation des particules
         //============================================
@@ -39,9 +39,35 @@ class Drapeau{
         // generation des ressorts
         //============================================
 
-        for(int x = 0; x<longueur;x++ ){
-            for(int y = 0 ; y<largeur; y++){
+
+        int profVoisin = 1;
+
+        for(int x = 0; x < longueur; x++ ){
+            for(int y = 0 ; y < largeur; y++){
                 
+                int index = x+y*longueur;
+
+                for (int xDecal = -profVoisin; xDecal <= profVoisin; xDecal++) {
+                    if (xDecal==0) continue;
+
+                    int xVoisin = x + xDecal;
+                    if (xVoisin < 0) continue;
+                    if (xVoisin > longueur) continue;
+ 
+                    
+                    for (int yDecal = -profVoisin; yDecal <= profVoisin; yDecal++) {
+                        if (yDecal==0) continue;
+
+                        int yVoisin = y + yDecal;
+                        if (yVoisin < 0) continue;
+                        if (yVoisin > largeur) continue;
+                         
+
+                        int indexVoisin = x+y*longueur;
+                        ressorts.add(new Ressort(particules.get(index), particules.get(indexVoisin), rigidePrincipale, longRep * sqrt(2) ));
+                        
+                    }
+                }
             
             }
         }

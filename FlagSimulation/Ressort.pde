@@ -2,18 +2,6 @@ class Ressort{
     
     public float rigidite;
     public float longueurRepos;
-    /*
-    public int idParticule1;
-    public int idParticule2;
-    
-    Ressort(int id1, int id2, float k, float l0){
-        rigidite=k;
-        longueurRepos=l0;
-        idParticule1=id1;
-        idParticule2=id2;
-        
-    }
-    */
     
     public Particule particule1;
     public Particule particule2;

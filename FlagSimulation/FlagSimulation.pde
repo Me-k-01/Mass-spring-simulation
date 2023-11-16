@@ -6,6 +6,10 @@ Drapeau d;
 PVector gravite, vent;
 float dt = 0.01f;
 
+float rigiditePrincipale=1500;
+float rigiditeSecond=100;
+float rigiditeDiag=100;
+
 void genereVent(float n) {
   vent.x = random(0,5);
   vent.y = 0.0;
@@ -25,7 +29,7 @@ void setup() {
   cam.setMaximumDistance(500);
   cam.setSuppressRollRotationMode(); 
   
-  d = new Drapeau(new PVector(0,0,0), 20 , 5 , 0.3 ,0.01 ,0, 100, 5.5);
+  d = new Drapeau(new PVector(0,0,0), 20 , 5 , 0.3 ,0.01, 100, 5.5);
   vent = new PVector(0,0,0); 
   gravite = new PVector(0,5.8,0); 
   
