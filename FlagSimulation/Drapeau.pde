@@ -54,13 +54,13 @@ class Drapeau{
                 if(lar)
                     ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur), rigiditePrincipale, longRep ));
                 if(y > 0 && lon)
-                    ressorts.add(new Ressort(particules.get(i), particules.get(i + 1 - longueur), rigiditeDiag, longRep*sqrt(2) ));
+                    ressorts.add(new Ressort(particules.get(i), particules.get(i + 1 - longueur), rigiditeDiag, longRep*sqrt(2.f) ));
                 if(lon && lar)
-                     ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur + 1), rigiditeDiag, longRep*sqrt(2) ));
+                     ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur + 1), rigiditeDiag, longRep*sqrt(2.f) ));
                 if(x < longueur-2)
-                   ressorts.add(new Ressort(particules.get(i), particules.get(i + 2), rigiditeSecond, longRep*2 ));
+                   ressorts.add(new Ressort(particules.get(i), particules.get(i + 2), rigiditeSecond, longRep*2.f ));
                 if(y < largeur-2)
-                   ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur*2), rigiditeSecond, longRep*2 ));
+                   ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur*2), rigiditeSecond, longRep*2.f ));
             }
         }
     
@@ -78,9 +78,9 @@ class Drapeau{
                 for (int i = 0; i < largeur; i++) {
                     for (int j = 0; j < longueur - 1; j++) {
                         ind = j + (i * longueur);
-                        if (i % 2 == 0)
+                         if(i <largeur-1)
                             triangles.add(new Triangle(particules.get(ind), particules.get(ind + 1), particules.get(ind + longueur + 1), amortissementAirTri));
-                        else
+                         if( i > 0)
                             triangles.add(new Triangle(particules.get(ind), particules.get(ind - longueur), particules.get(ind + 1), amortissementAirTri));
                     }
                 }
@@ -126,10 +126,15 @@ class Drapeau{
         particules.get(i).dessiner(10);
     }
         */
-        
+        /*
         for (int i = 0; i < ressorts.size();i++) {
             ressorts.get(i).dessiner();
         }
-        //triangles.get(0).dessiner();
+        */        
+        
+        for (int i = 0; i < triangles.size();i++) {
+            triangles.get(i).dessiner();
+        }
+          
     }
 }

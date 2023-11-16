@@ -19,7 +19,7 @@ class Ressort{
         
         float dist = p1P2.mag();
         
-        PVector f = PVector.mult(p1P2,(dist - longueurRepos) * - rigidite );
+        PVector f = PVector.mult(p1P2,(longueurRepos - dist) * - rigidite );
         //print(dist+"\n");
         particule1.forceExterne.add(f);
         particule2.forceExterne.sub(f);
