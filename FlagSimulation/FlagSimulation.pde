@@ -4,7 +4,7 @@ import peasy.*;
 PeasyCam cam;
 Drapeau d;
 PVector gravite, vent;
-
+float dt = 0.01f;
 
 void genereVent(float n) {
   vent.x = random(0,5);
@@ -37,7 +37,6 @@ void draw() {
   
   //genereVent(10);
   d.dessiner();
-  d.mettreAJour(0.01f);
-  
+  d.mettreAJour(dt);
     
 }
