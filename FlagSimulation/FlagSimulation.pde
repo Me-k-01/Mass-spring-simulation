@@ -6,9 +6,9 @@ Drapeau d;
 PVector gravite, vent;
 float dt = 0.01f;
 
-float rigiditePrincipale=1500;
-float rigiditeSecond=100;
-float rigiditeDiag=100;
+float rigiditePrincipale=-1;
+float rigiditeSecond=-1;
+float rigiditeDiag=-1;
 
 void genereVent(float n) {
   vent.x = random(0,5);
@@ -39,7 +39,7 @@ void setup() {
 void draw() {
   background(200);
   
-  //genereVent(10);
+  genereVent(10);
   d.dessiner();
   d.mettreAJour(dt);
     

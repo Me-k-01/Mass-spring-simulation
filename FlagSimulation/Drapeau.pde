@@ -41,12 +41,26 @@ class Drapeau{
 
 
        boolean lon,lar;
-
+  
         for(int x = 0; x < longueur; x++ ){
             for(int y = 0 ; y < largeur; y++){
                 
+                lon = x <longueur-1;
+                lar = y < largeur -1;
                 
-            
+                int i = x + (y*longueur);
+                if(lon)
+                    ressorts.add(new Ressort(particules.get(i), particules.get(i + 1), rigiditePrincipale, longRep ));
+                if(lar)
+                    ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur), rigiditePrincipale, longRep ));
+                if(y > 0 && lon)
+                    ressorts.add(new Ressort(particules.get(i), particules.get(i + 1 - longueur), rigiditeDiag, longRep*sqrt(2) ));
+                if(lon && lar)
+                     ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur + 1), rigiditeDiag, longRep*sqrt(2) ));
+                if(x < longueur-2)
+                   ressorts.add(new Ressort(particules.get(i), particules.get(i + 2), rigiditeSecond, longRep*2 ));
+                if(y < largeur-2)
+                   ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur*2), rigiditeSecond, longRep*2 ));
             }
         }
     
