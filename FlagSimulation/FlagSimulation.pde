@@ -4,7 +4,7 @@ import peasy.*;
 PeasyCam cam;
 Drapeau d;
 PVector gravite, vent;
-float dt = 0.04f;
+float dt = 0.1f;
 
 float rigiditePrincipale=1;
 float rigiditeSecond=0.1;
@@ -17,39 +17,6 @@ void genereVent(float n) {
   
   vent.mult(n);
 }
-
-void dessinerDirectionVent(PVector position, float size){
-  
-  PVector vn = new PVector(0,0,0);
-  vent.normalize(vn);
-  
-  PVector pointVers = PVector.add(position, vn);
-
-  fill(60,200,114);
- 
-  beginShape(TRIANGLES);
-  
-  vertex(position.x, position.y -size/2, position.z);
-  
-  vertex(position.x, position.y+size /2, position.z);
-  
-  vertex(pointVers.x +size , pointVers.y, pointVers.z);
-  
-  endShape();
-  
-  
- beginShape(TRIANGLES);
-  
-  vertex(position.x, position.y, position.z -size/2);
-  
-  vertex(position.x, position.y, position.z +size /2);
-  
-  vertex(pointVers.x +size , pointVers.y, pointVers.z);
-  
-  endShape();
-        
-}
-
 
 void setup() { 
     
@@ -73,7 +40,6 @@ void draw() {
   background(200);
   
   genereVent(10);
-  dessinerDirectionVent(new PVector(-100,-100,0), 50 );
   
   d.dessiner();
   d.mettreAJour(dt);
