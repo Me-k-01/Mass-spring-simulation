@@ -8,7 +8,7 @@ PVector gravite, vent;
 
 void genereVent(float n){
   
- vent.x =1+ random(-1,4);
+ vent.x = random(0,5);
  vent.y = 0.0;
  vent.z =random(-5,5);
  
@@ -26,7 +26,7 @@ void setup() {
   cam.setMaximumDistance(500);
   cam.setSuppressRollRotationMode(); 
 
-  d = new Drapeau( new PVector(0,0,0), 20 , 5 , 0.3 ,0.01 ,-1, 100, 5.5);
+  d = new Drapeau( new PVector(0,0,0), 20 , 5 , 0.3 ,0.01 ,0, 100, 5.5);
   vent =  new PVector(0,0,0); 
   gravite = new PVector(0,5.8,0); 
   
@@ -36,9 +36,9 @@ void setup() {
 void draw() {
   background(200);
   
-  genereVent(10);
+  //genereVent(10);
   d.dessiner();
-  d.mettreAJour(0.02f);
+  d.mettreAJour(0.01f);
   
 
 }

@@ -3,7 +3,7 @@ class Drapeau{
     public ArrayList<Particule> particules = new ArrayList<Particule>();
     public int longueur;
     public int largeur;
-    public float espacement = 100.f;
+  
     public PVector position;
     
     public ArrayList<Ressort> ressorts = new ArrayList<Ressort>();
@@ -22,8 +22,8 @@ class Drapeau{
         PVector posParticule;
         for(int i =0 ; i<nbParticules ; i++){
           
-            x = (i%longueur)*espacement;
-            y = int(i/longueur)*espacement;
+            x = (i%longueur)*longRep;
+            y = int(i/longueur)*longRep;
             posParticule = new PVector(x,y,0).add(position);
             
             particules.add(new Particule(posParticule,new PVector(0,0,0), masses , amortissementAirMasses ));
@@ -45,7 +45,7 @@ class Drapeau{
             
             if( (i % longueur) < longueur-1 ){
                 ressorts.add(new Ressort( particules.get(i), particules.get(i+1), rigide, longRep  ));
-                //ressorts.add(new Ressort( particules.get(i+1), particules.get(i), rigide, longRep  ));
+                
                 lon = true;
             }
             if( int(i/longueur) < largeur-1 ){
