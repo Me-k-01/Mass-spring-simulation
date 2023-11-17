@@ -44,7 +44,8 @@ class Drapeau{
   
         for(int x = 0; x < longueur; x++ ){
             for(int y = 0 ; y < largeur; y++){
-                
+                // Pour chaque masses on ajoute les ressorts sur un seul sens
+
                 lon = x <longueur-1;
                 lar = y < largeur -1;
                 
@@ -63,8 +64,6 @@ class Drapeau{
                    ressorts.add(new Ressort(particules.get(i), particules.get(i + longueur*2), rigiditeSecond, longRep*2.f ));
             }
         }
-    
-
 
 
         //============================================
@@ -126,15 +125,15 @@ class Drapeau{
         particules.get(i).dessiner(10);
     }
         */
-        /*
+        
         for (int i = 0; i < ressorts.size();i++) {
             ressorts.get(i).dessiner();
         }
-        */      
-        
+              
+        /*
         for (int i = 0; i < triangles.size();i++) {
             triangles.get(i).dessiner();
         }
-        
+        */
     }
 }
