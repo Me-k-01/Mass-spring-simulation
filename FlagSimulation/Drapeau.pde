@@ -130,11 +130,11 @@ class Drapeau{
         for (int i = 0; i < ressorts.size();i++) {
             ressorts.get(i).dessiner();
         }
-        */        
+        */      
         
         for (int i = 0; i < triangles.size();i++) {
             triangles.get(i).dessiner();
         }
-          
+        
     }
 }
