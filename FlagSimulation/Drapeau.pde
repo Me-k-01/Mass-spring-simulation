@@ -125,15 +125,15 @@ class Drapeau{
         particules.get(i).dessiner(10);
     }
         */
-        
+        /*
         for (int i = 0; i < ressorts.size();i++) {
             ressorts.get(i).dessiner();
         }
-              
-        /*
+        */    
+        
         for (int i = 0; i < triangles.size();i++) {
             triangles.get(i).dessiner();
         }
-        */
+        
     }
 }
