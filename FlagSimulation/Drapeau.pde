@@ -10,7 +10,7 @@ class Drapeau{
     public ArrayList<Triangle> triangles = new ArrayList<Triangle>();
     
     
-    public Drapeau(PVector p, int nbParticules, int l, float masses , float amortissementAirMasses ,float longRep,float amortissementAirTri ) {
+    public Drapeau(PVector p, int nbParticules, int l, float masses, float amortissementAirMasses, float longRep, float amortissementAirTri ) {
         
         // generation des particules
         //============================================
@@ -26,7 +26,7 @@ class Drapeau{
             float y = int(i / longueur) * longRep;
             posParticule = new PVector(x, y, 0).add(position);
             
-            particules.add(new Particule(posParticule, new PVector(0,0,0), masses, amortissementAirMasses));
+            particules.add(new Particule(posParticule, new PVector(0, 0, 0), masses, amortissementAirMasses));
         }
 
         // contraintes statiques 
@@ -46,8 +46,8 @@ class Drapeau{
             for(int y = 0 ; y < largeur; y++){
                 // Pour chaque masses on ajoute les ressorts sur un seul sens
 
-                lon = x <longueur-1;
-                lar = y < largeur -1;
+                lon = x <longueur - 1;
+                lar = y < largeur - 1;
                 
                 int i = x + (y*longueur);
                 if(lon)
@@ -77,14 +77,13 @@ class Drapeau{
                 for (int i = 0; i < largeur; i++) {
                     for (int j = 0; j < longueur - 1; j++) {
                         ind = j + (i * longueur);
-                         if(i <largeur-1)
+                        if (i < largeur - 1)
                             triangles.add(new Triangle(particules.get(ind), particules.get(ind + 1), particules.get(ind + longueur + 1), amortissementAirTri));
-                         if( i > 0)
+                        if ( i > 0)
                             triangles.add(new Triangle(particules.get(ind), particules.get(ind - longueur), particules.get(ind + 1), amortissementAirTri));
                     }
                 }
-            }
-            
+            } 
         }  
     }
     
@@ -113,7 +112,7 @@ class Drapeau{
     public void mettreAJour(float t) {
         
         forces();
-        for (int i = 0; i < particules.size();i++) {
+        for (int i = 0; i < particules.size(); i++) {
             particules.get(i).integration(t);
         }
     }
@@ -131,7 +130,7 @@ class Drapeau{
         }
         */    
         
-        for (int i = 0; i < triangles.size();i++) {
+        for (int i = 0; i < triangles.size(); i++) {
             triangles.get(i).dessiner();
         }
         
