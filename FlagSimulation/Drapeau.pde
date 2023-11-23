@@ -30,10 +30,14 @@ class Drapeau{
         }
 
         // contraintes statiques 
-        particules.get(0).statique = true;
-        if (nbParticules > 2)
-            particules.get((largeur - 1) * longueur).statique = true; 
-
+       
+        for(int i =0 ; i<14; i++)
+          particules.get(i).statique = true;
+          
+        //if (nbParticules > 2)
+        // particules.get((largeur - 1) * longueur).statique = true; 
+      
+       
 
         //============================================
         // generation des ressorts
@@ -118,21 +122,21 @@ class Drapeau{
     }
     
     
-    public void dessiner() {
+    public void dessiner(boolean t) {
         /*
         for(int i =0 ; i<particules.size();i++){
         particules.get(i).dessiner(10);
     }
         */
-        /*
-        for (int i = 0; i < ressorts.size();i++) {
-            ressorts.get(i).dessiner();
-        }
-        */    
+        if(!t)
+          for (int i = 0; i < ressorts.size();i++) {
+              ressorts.get(i).dessiner();
+          }
         
-        for (int i = 0; i < triangles.size(); i++) {
-            triangles.get(i).dessiner();
-        }
-        
+        else
+          for (int i = 0; i < triangles.size(); i++) {
+              triangles.get(i).dessiner();
+          }
+       
     }
 }

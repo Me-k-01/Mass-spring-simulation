@@ -60,15 +60,8 @@ class Triangle{
         particule3.dessiner(2);
         
         stroke(0);
-        line(particule1.position.x ,particule1.position.y,particule1.position.z,
-             particule2.position.x ,particule2.position.y,particule2.position.z);
-
-        line(particule1.position.x ,particule1.position.y,particule1.position.z,
-            particule3.position.x ,particule3.position.y,particule3.position.z);
-
-        line(particule2.position.x ,particule2.position.y,particule2.position.z,
-             particule3.position.x ,particule3.position.y,particule3.position.z);
         
+   
         fill(127,25,69);
         beginShape(TRIANGLES);
         vertex(particule1.position.x ,particule1.position.y,particule1.position.z);
