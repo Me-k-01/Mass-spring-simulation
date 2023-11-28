@@ -31,13 +31,7 @@ class Drapeau{
 
         // contraintes statiques 
         for(int i =0 ; i < particules_statiques.size(); i++)
-            particules.get(particules_statiques.getInt(i)).statique = true;
-        //  particules.get(i).statique = true;
-        
-          
-        //if (nbParticules > 2)
-        // particules.get((largeur - 1) * longueur).statique = true; 
-      
+            particules.get(particules_statiques.getInt(i)).statique = true; 
        
 
         //============================================

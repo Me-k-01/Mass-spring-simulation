@@ -33,8 +33,7 @@ void modifVent() {
 
 void setup() {   
   config = loadJSONObject("preset.json");
-  presets = config.getJSONArray("presets"); 
-  
+  presets = config.getJSONArray("presets");
    
   size(1240, 720, P3D);
   frameRate(30);
