@@ -78,14 +78,19 @@ void keyPressed(){
     println("Configuration : Pause à " + pause);
   }
   
-  if(key == '&') { //preset
+  if(key == '1' || key == '&') { //preset
     println("Configuration : Changement de scene");
     presetActuel = 0;
     sceneSetup();
   }
-  if(key == 'é') { //preset
+  if(key == '2' || key == 'é') { //preset
     println("Configuration : Changement de scene");
     presetActuel = 1;
+    sceneSetup();
+  }
+  if(key == '3' || key == '"') { //preset
+    println("Configuration : Changement de scene");
+    presetActuel = 2;
     sceneSetup();
   }
 }
