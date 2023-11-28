@@ -1,0 +1,16 @@
+
+{
+    "presets": [
+        {  
+            "position": [0.0, 0.0, 0.0],
+            "nombre_de_particules": 140,
+            "taille_du_drapeau": 14,
+            "masses" : 5,
+            "amortissement_air_masses" : 0.01,
+            "longueur_repos" : 50,
+            "amortissement_air_tri" : 5.5,
+
+            "puissance_du_vent" : 20
+        }
+    ]
+}

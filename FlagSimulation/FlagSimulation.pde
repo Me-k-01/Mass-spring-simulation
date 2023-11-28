@@ -1,5 +1,5 @@
 import peasy.*;
-
+ 
 
 PeasyCam cam;
 Drapeau d;
@@ -14,7 +14,9 @@ float rigiditeDiag=1;
 boolean pause = false;
 boolean renduTriangle = true;
 
-
+int presetActuel = 0; 
+JSONObject config;
+JSONArray presets;
 
 void genereVent(float n) {
   vent.x = random(0,5);
@@ -24,18 +26,25 @@ void genereVent(float n) {
   vent.mult(n);
 }
 
-void setup() { 
-    
-  size(1240,720,P3D);
+
+
+void setup() {   
+  config = loadJSONObject("preset.json");
+  presets = config.getJSONArray("presets");
+  config = presets.getJSONObject(presetActuel);   
+  
+  size(1240, 720, P3D);
   frameRate(30);
   
-  cam = new PeasyCam(this,500);
+  cam = new PeasyCam(this, 500);
   
   cam.setMinimumDistance(50);
   cam.setMaximumDistance(1000);
   cam.setSuppressRollRotationMode(); 
  
-  d = new Drapeau(new PVector(0,0,0), 140 , 14 , 5 ,0.01, 50, 5.5);
+  JSONArray posD = config.getJSONArray("position");  
+  d = new Drapeau(new PVector(posD.getFloat(0), posD.getFloat(1), posD.getFloat(2)), 
+    config.getInt("nombre_de_particules") , config.getInt("taille_du_drapeau") , config.getFloat("masses") , config.getFloat("amortissement_air_masses"), config.getFloat("longueur_repos"), config.getFloat("amortissement_air_tri"));
   vent = new PVector(0,0,0); 
   gravite = new PVector(0,9.8,0); 
   
@@ -58,9 +67,9 @@ void draw() {
   background(200);
   
   d.dessiner(renduTriangle);
-  genereVent(20);
+  genereVent(config.getFloat("puissance_du_vent"));
   
-  if(pause){
+  if (!pause) {
     for(float i = 0; i < 0.1f; i+= dt){
       d.mettreAJour(dt);
     }
