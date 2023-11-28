@@ -7,9 +7,9 @@ PVector gravite, vent;
 float dt = 0.001f;
 
 
-float rigiditePrincipale=10;
-float rigiditeSecond=1;
-float rigiditeDiag=1;
+float rigiditePrincipale;
+float rigiditeSecond;
+float rigiditeDiag;
 
 boolean pause = false;
 boolean renduTriangle = true;
@@ -33,6 +33,7 @@ void setup() {
   presets = config.getJSONArray("presets");
   config = presets.getJSONObject(presetActuel);   
   
+   
   size(1240, 720, P3D);
   frameRate(30);
   
@@ -42,12 +43,23 @@ void setup() {
   cam.setMaximumDistance(1000);
   cam.setSuppressRollRotationMode(); 
  
+  rigiditePrincipale = config.getFloat("rigidite_principale");
+  rigiditeSecond = config.getFloat("rigidite_secondaire");
+  rigiditeDiag = config.getFloat("rigidite_diagonale");
+ 
   JSONArray posD = config.getJSONArray("position");  
-  d = new Drapeau(new PVector(posD.getFloat(0), posD.getFloat(1), posD.getFloat(2)), 
-    config.getInt("nombre_de_particules") , config.getInt("taille_du_drapeau") , config.getFloat("masses") , config.getFloat("amortissement_air_masses"), config.getFloat("longueur_repos"), config.getFloat("amortissement_air_tri"));
+  d = new Drapeau(
+    new PVector(posD.getFloat(0), posD.getFloat(1), posD.getFloat(2)), 
+    config.getInt("nombre_de_particules"), 
+    config.getInt("taille_du_drapeau"),
+    config.getFloat("masses"),
+    config.getFloat("amortissement_air_masses"),
+    config.getFloat("longueur_repos"),
+    config.getFloat("amortissement_air_tri"),
+    config.getJSONArray("masses_statiques")
+  );
   vent = new PVector(0,0,0); 
-  gravite = new PVector(0,9.8,0); 
-  
+  gravite = new PVector(0,9.8,0);  
 }
 
 void keyPressed(){
@@ -56,7 +68,7 @@ void keyPressed(){
     renduTriangle = !renduTriangle;
     println("Configuration : rendu en triangle à " + renduTriangle);
   } 
-  if(key == 'p'){//pause
+  if(key == 'p') {//pause
     pause = !pause;
     println("Configuration : Pause à " + pause);
   }

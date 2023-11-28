@@ -10,7 +10,15 @@
             "longueur_repos" : 50,
             "amortissement_air_tri" : 5.5,
 
-            "puissance_du_vent" : 20
+            "puissance_du_vent" : 20,
+
+            "masses_statiques" : [ 
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+            ],
+
+            "rigidite_principale" : 10,
+            "rigidite_diagonale" : 1,
+            "rigidite_secondaire" : 1
         }
     ]
 }
