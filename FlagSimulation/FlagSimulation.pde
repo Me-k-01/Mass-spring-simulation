@@ -14,7 +14,7 @@ float rigiditeDiag;
 boolean pause = false;
 boolean renduTriangle = true;
 
-int presetActuel = 0; 
+int presetActuel = 1; 
 JSONObject config;
 JSONArray presets;
 
