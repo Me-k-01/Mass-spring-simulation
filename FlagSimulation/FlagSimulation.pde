@@ -30,8 +30,7 @@ void genereVent(float n) {
 
 void setup() {   
   config = loadJSONObject("preset.json");
-  presets = config.getJSONArray("presets");
-  config = presets.getJSONObject(presetActuel);   
+  presets = config.getJSONArray("presets"); 
   
    
   size(1240, 720, P3D);
@@ -42,7 +41,13 @@ void setup() {
   cam.setMinimumDistance(50);
   cam.setMaximumDistance(1000);
   cam.setSuppressRollRotationMode(); 
- 
+  
+  sceneSetup();
+}
+
+void sceneSetup() {
+  config = presets.getJSONObject(presetActuel);   
+  
   rigiditePrincipale = config.getFloat("rigidite_principale");
   rigiditeSecond = config.getFloat("rigidite_secondaire");
   rigiditeDiag = config.getFloat("rigidite_diagonale");
@@ -73,6 +78,16 @@ void keyPressed(){
     println("Configuration : Pause à " + pause);
   }
   
+  if(key == '&') { //preset
+    println("Configuration : Changement de scene");
+    presetActuel = 0;
+    sceneSetup();
+  }
+  if(key == 'é') { //preset
+    println("Configuration : Changement de scene");
+    presetActuel = 1;
+    sceneSetup();
+  }
 }
 
 void draw() {
