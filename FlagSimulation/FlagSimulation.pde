@@ -26,7 +26,10 @@ void genereVent(float n) {
   vent.mult(n);
 }
 
-
+void modifVent() {
+  vent.x += random(0, 0.1);
+  vent.z += random(-0.1,0.1);
+}
 
 void setup() {   
   config = loadJSONObject("preset.json");
@@ -65,6 +68,7 @@ void sceneSetup() {
   );
   vent = new PVector(0,0,0); 
   gravite = new PVector(0,9.8,0);  
+  genereVent(config.getFloat("puissance_du_vent"));
 }
 
 void keyPressed(){
@@ -77,18 +81,18 @@ void keyPressed(){
     pause = !pause;
     println("Configuration : Pause à " + pause);
   }
-  
-  if(key == '1' || key == '&') { //preset
+  //////// preset ////////
+  if(key == '1' || key == '&') { // drapeau
     println("Configuration : Changement de scene");
     presetActuel = 0;
     sceneSetup();
   }
-  if(key == '2' || key == 'é') { //preset
+  if(key == '2' || key == 'é') { // haut fixé
     println("Configuration : Changement de scene");
     presetActuel = 1;
     sceneSetup();
   }
-  if(key == '3' || key == '"') { //preset
+  if(key == '3' || key == '"') { // drap pendu par les coins
     println("Configuration : Changement de scene");
     presetActuel = 2;
     sceneSetup();
@@ -99,7 +103,7 @@ void draw() {
   background(200);
   
   d.dessiner(renduTriangle);
-  genereVent(config.getFloat("puissance_du_vent"));
+  modifVent();
   
   if (!pause) {
     for(float i = 0; i < 0.1f; i+= dt){
