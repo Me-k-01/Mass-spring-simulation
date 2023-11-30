@@ -49,7 +49,7 @@
             "longueur_repos" : 50,
             "amortissement_air_tri" : 5.5,
 
-            "puissance_du_vent" : 20,
+            "puissance_du_vent" : 10,
 
             "masses_statiques" : [ 
                 0, 14

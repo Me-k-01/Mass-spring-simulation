@@ -14,7 +14,7 @@ float rigiditeDiag;
 boolean pause = false;
 boolean renduTriangle = true;
 
-int presetActuel = 1; 
+int presetActuel = 0; 
 JSONObject config;
 JSONArray presets;
 
@@ -105,7 +105,7 @@ void draw() {
   modifVent();
   
   if (!pause) {
-    for(float i = 0; i < 0.1f; i+= dt){
+    for (float i = 0; i < 0.1f; i += dt) {
       d.mettreAJour(dt);
     }
   }
