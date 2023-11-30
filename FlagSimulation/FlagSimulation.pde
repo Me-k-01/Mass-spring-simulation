@@ -21,14 +21,15 @@ JSONArray presets;
 void genereVent(float n) {
   vent.x = random(0,5);
   vent.y = 0.0;
-  vent.z = random(-5,5);
+  vent.z = -1.f;
   
   vent.mult(n);
 }
 
 void modifVent() {
-  vent.x += random(0, 0.1);
-  vent.z += random(-0.1,0.1);
+  vent.x += random(-0.1, 0.1);
+  
+  vent.z += random(-0.1, 0.1);
 }
 
 void setup() {   
